@@ -1,0 +1,19 @@
+﻿<UserControl x:Class="DungeonMaster.RoomTileUC"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:DungeonMaster"
+             mc:Ignorable="d" 
+             d:DesignHeight="128" d:DesignWidth="128">
+    <Border x:Name="border_TileBorder">
+        <Grid x:Name="grid_Main">
+            <Image x:Name="image_TileBG" Source="/Resources/Image/Tiles/TilesLight.png" RenderOptions.BitmapScalingMode="HighQuality"/>
+            <Image x:Name="image_RoomConnectionNorth" RenderOptions.BitmapScalingMode="HighQuality" />
+            <Image x:Name="image_RoomConnectionSouth" RenderOptions.BitmapScalingMode="HighQuality" />
+            <Image x:Name="image_RoomConnectionEast" RenderOptions.BitmapScalingMode="HighQuality" />
+            <Image x:Name="image_RoomConnectionWest" RenderOptions.BitmapScalingMode="HighQuality"/>
+            <Image x:Name="image_RoomType" RenderOptions.BitmapScalingMode="HighQuality" />
+        </Grid>
+    </Border>
+</UserControl>

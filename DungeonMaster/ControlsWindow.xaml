@@ -1,0 +1,35 @@
+﻿<Window x:Class="DungeonMaster.ControlsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DungeonMaster"
+        mc:Ignorable="d"
+        ResizeMode="CanMinimize"
+        WindowStartupLocation="CenterScreen"
+        Title="Controls" Height="560" Width="300">
+    <Grid>
+        <StackPanel HorizontalAlignment="Center">
+            <Label Content="Basic Controls" FontSize="16" FontWeight="Bold" Foreground="DarkOrange"/>
+            <Label Content="Left Mouse Click - Select Tile"/>
+            <Label Content="Right Mouse Click (Held) - Move around"/>
+            <Label Content="Mouse Scroll - Zoom"/>
+            <Label/>
+            <Label Content="Rooms (Shortcuts)" FontSize="16" FontWeight="Bold" Foreground="DarkOrange"/>
+            <Label Content="1 - None"/>
+            <Label Content="2 - Random"/>
+            <Label Content="3 - Hallway"/>
+            <Label Content="4 - Start"/>
+            <Label Content="5 - Exit"/>
+            <Label Content="6 - Encounter"/>
+            <Label Content="7 - Loot"/>
+            <Label Content="8 - Expansion (The Big Swell)"/>
+            <Label/>
+            <Label Content="Connections (Shortcuts)" FontSize="16" FontWeight="Bold" Foreground="DarkOrange"/>
+            <Label Content="W - North"/>
+            <Label Content="A - West"/>
+            <Label Content="S - South"/>
+            <Label Content="D - East"/>
+        </StackPanel>
+    </Grid>
+</Window>

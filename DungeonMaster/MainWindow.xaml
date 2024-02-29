@@ -1,0 +1,226 @@
+﻿<Window x:Class="DungeonMaster.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DungeonMaster"
+        mc:Ignorable="d"
+        ResizeMode="CanMinimize"
+        WindowStartupLocation="CenterScreen"
+        Title="DungeonMaster" Height="700" Width="1000">
+
+
+    <Window.Resources>
+        <RoutedUICommand x:Key="cmd_SetRoomTypeNone" Text="Set RoomType None" />
+        <RoutedUICommand x:Key="cmd_SetRoomTypeRandom" Text="Set RoomType Random" />
+        <RoutedUICommand x:Key="cmd_SetRoomTypeHallway" Text="Set RoomType Hallway" />
+        <RoutedUICommand x:Key="cmd_SetRoomTypeStart" Text="Set RoomType Start" />
+        <RoutedUICommand x:Key="cmd_SetRoomTypeExit" Text="Set RoomType Exit" />
+        <RoutedUICommand x:Key="cmd_SetRoomTypeEncounter" Text="Set RoomType Encounter" />
+        <RoutedUICommand x:Key="cmd_SetRoomTypeLoot" Text="Set RoomType Loot" />
+        <RoutedUICommand x:Key="cmd_SetRoomTypeExtension" Text="Set RoomType Extension" />
+        
+        <RoutedUICommand x:Key="cmd_SetRoomConnectionNorth" Text="Set RoomConnection North" />
+        <RoutedUICommand x:Key="cmd_SetRoomConnectionWest" Text="Set RoomConnection West" />
+        <RoutedUICommand x:Key="cmd_SetRoomConnectionEast" Text="Set RoomConnection East" />
+        <RoutedUICommand x:Key="cmd_SetRoomConnectionSouth" Text="Set RoomConnection South" />
+    </Window.Resources>
+
+    <Window.CommandBindings>
+        <CommandBinding Command="{StaticResource cmd_SetRoomTypeNone}" Executed="cmd_SetRoomTypeNone" />
+        <CommandBinding Command="{StaticResource cmd_SetRoomTypeRandom}" Executed="cmd_SetRoomTypeRandom" />
+        <CommandBinding Command="{StaticResource cmd_SetRoomTypeHallway}" Executed="cmd_SetRoomTypeHallway" />
+        <CommandBinding Command="{StaticResource cmd_SetRoomTypeStart}" Executed="cmd_SetRoomTypeStart" />
+        <CommandBinding Command="{StaticResource cmd_SetRoomTypeExit}" Executed="cmd_SetRoomTypeExit" />
+        <CommandBinding Command="{StaticResource cmd_SetRoomTypeEncounter}" Executed="cmd_SetRoomTypeEncounter" />
+        <CommandBinding Command="{StaticResource cmd_SetRoomTypeLoot}" Executed="cmd_SetRoomTypeLoot" />
+        <CommandBinding Command="{StaticResource cmd_SetRoomTypeExtension}" Executed="cmd_SetRoomTypeExtension" />
+
+        <CommandBinding Command="{StaticResource cmd_SetRoomConnectionNorth}" Executed="cmd_SetRoomConnectionNorth" />
+        <CommandBinding Command="{StaticResource cmd_SetRoomConnectionWest}" Executed="cmd_SetRoomConnectionWest" />
+        <CommandBinding Command="{StaticResource cmd_SetRoomConnectionEast}" Executed="cmd_SetRoomConnectionEast" />
+        <CommandBinding Command="{StaticResource cmd_SetRoomConnectionSouth}" Executed="cmd_SetRoomConnectionSouth" />
+    </Window.CommandBindings>
+
+    <Window.InputBindings>
+        <KeyBinding Key="D1" Command="{StaticResource cmd_SetRoomTypeNone}" />
+        <KeyBinding Key="D2" Command="{StaticResource cmd_SetRoomTypeRandom}" />
+        <KeyBinding Key="D3" Command="{StaticResource cmd_SetRoomTypeHallway}" />
+        <KeyBinding Key="D4" Command="{StaticResource cmd_SetRoomTypeStart}" />
+        <KeyBinding Key="D5" Command="{StaticResource cmd_SetRoomTypeExit}" />
+        <KeyBinding Key="D6" Command="{StaticResource cmd_SetRoomTypeEncounter}" />
+        <KeyBinding Key="D7" Command="{StaticResource cmd_SetRoomTypeLoot}" />
+        <KeyBinding Key="D8" Command="{StaticResource cmd_SetRoomTypeExtension}" />
+
+        <KeyBinding Key="W" Command="{StaticResource cmd_SetRoomConnectionNorth}" />
+        <KeyBinding Key="A" Command="{StaticResource cmd_SetRoomConnectionWest}" />
+        <KeyBinding Key="D" Command="{StaticResource cmd_SetRoomConnectionEast}" />
+        <KeyBinding Key="S" Command="{StaticResource cmd_SetRoomConnectionSouth}" />
+    </Window.InputBindings>
+    
+    
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+
+        <Menu Grid.Row="0">
+            <MenuItem Header="File">
+                <MenuItem x:Name="menuitem_Open" Header="Open" Click="menuitem_Open_Click" />
+                <MenuItem x:Name="menuitem_Save" Header="Save" Click="menuitem_Save_Click"/>
+            </MenuItem>
+            <MenuItem Header="About">
+                <MenuItem x:Name="menuitem_Controls" Header="Controls" Click="menuitem_Controls_Click">
+                    <MenuItem.Icon>
+                        <Image Source="/Resources/Image/Tiles/RoomType/Unknown.png" RenderOptions.BitmapScalingMode="HighQuality"/>
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem x:Name="menuitem_GitHub" Header="GitHub" Click="menuitem_GitHub_Click">
+                    <MenuItem.Icon>
+                        <Image Source="/Resources/Image/Icons/github.png" RenderOptions.BitmapScalingMode="HighQuality"/>
+                    </MenuItem.Icon>
+                </MenuItem>
+                <Separator/>
+                <MenuItem x:Name="menuitem_Donate" Header="Donate" Click="menuitem_Donate_Click">
+                    <MenuItem.Icon>
+                        <Image Source="/Resources/Image/Icons/ko-fi.png" RenderOptions.BitmapScalingMode="HighQuality"/>
+                    </MenuItem.Icon>
+                </MenuItem>
+            </MenuItem>
+        </Menu>
+
+        
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.85*"/>
+                <ColumnDefinition Width="0.20*"/>
+            </Grid.ColumnDefinitions>
+            
+            <ScrollViewer x:Name="scrollviewer_LayoutGrid" Grid.Column="0" Grid.Row="1" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden" PreviewMouseRightButtonDown="scrollViewer_PreviewMouseRightButtonDown" PreviewMouseMove="scrollViewer_PreviewMouseMove" PreviewMouseRightButtonUp="scrollViewer_PreviewMouseRightButtonUp">
+                <Grid x:Name="grid_RoomLayout" Height="1000" Width="1000" MouseWheel="grid_RoomLayout_MouseWheel">
+                </Grid>
+            </ScrollViewer>
+
+
+            <Grid Grid.Column="1" MaxWidth="262">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="0.70*"/>
+                    <RowDefinition Height="0.30*"/>
+                </Grid.RowDefinitions>
+
+                <GroupBox Grid.Row="0" Header="Rooms">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="0.5*"/>
+                            <ColumnDefinition Width="0.5*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="1*"/>
+                            <RowDefinition Height="1*"/>
+                            <RowDefinition Height="1*"/>
+                            <RowDefinition Height="1*"/>
+                        </Grid.RowDefinitions>
+
+                        <Button x:Name="btn_RoomNone" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5" Background="Transparent" BorderBrush="Transparent" Command="{StaticResource cmd_SetRoomTypeNone}" ToolTip="None">
+                            <Image Source="/Resources/Image/Editor/None.png" RenderOptions.BitmapScalingMode="HighQuality"/>
+                        </Button>
+
+                        <Button x:Name="btn_RoomRandom" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5" Background="Transparent" BorderBrush="Transparent" Command="{StaticResource cmd_SetRoomTypeRandom}" ToolTip="Random">
+                            <Image Source="/Resources/Image/Editor/Random.png" RenderOptions.BitmapScalingMode="HighQuality"/>
+                        </Button>
+
+                        <Button x:Name="btn_RoomHallway" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5" Background="Transparent" BorderBrush="Transparent" Command="{StaticResource cmd_SetRoomTypeHallway}" ToolTip="Hallway">
+                            <Image Source="/Resources/Image/Editor/Hallway.png" RenderOptions.BitmapScalingMode="HighQuality"/>
+                        </Button>
+
+                        <Button x:Name="btn_RoomStart" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5" Background="Transparent" BorderBrush="Transparent" Command="{StaticResource cmd_SetRoomTypeStart}" ToolTip="Start">
+                            <Image Source="/Resources/Image/Editor/Start.png" RenderOptions.BitmapScalingMode="HighQuality"/>
+                        </Button>
+
+                        <Button x:Name="btn_RoomExit" Grid.Row="2" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5" Background="Transparent" BorderBrush="Transparent" Command="{StaticResource cmd_SetRoomTypeExit}" ToolTip="Exit">
+                            <Image Source="/Resources/Image/Editor/Exit.png" RenderOptions.BitmapScalingMode="HighQuality"/>
+                        </Button>
+
+                        <Button x:Name="btn_RoomEncounter" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5" Background="Transparent" BorderBrush="Transparent" Command="{StaticResource cmd_SetRoomTypeEncounter}" ToolTip="Encounter">
+                            <Image Source="/Resources/Image/Editor/Encounter.png" RenderOptions.BitmapScalingMode="HighQuality"/>
+                        </Button>
+
+                        <Button x:Name="btn_RoomLoot" Grid.Row="3" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5" Background="Transparent" BorderBrush="Transparent" Command="{StaticResource cmd_SetRoomTypeLoot}" ToolTip="Loot">
+                            <Image Source="/Resources/Image/Editor/Loot.png" RenderOptions.BitmapScalingMode="HighQuality"/>
+                        </Button>
+
+                        <Button x:Name="btn_RoomExtension" Grid.Row="3" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5" Background="Transparent" BorderBrush="Transparent" Command="{StaticResource cmd_SetRoomTypeExtension}" ToolTip="Extension (The Big Swell)">
+                            <Image Source="/Resources/Image/Editor/Extension.png" RenderOptions.BitmapScalingMode="HighQuality"/>
+                        </Button>
+
+                    </Grid>
+                </GroupBox>
+
+
+                <GroupBox Grid.Row="1" Header="Connections">
+
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="1*"/>
+                            <RowDefinition Height="1*"/>
+                            <RowDefinition Height="1*"/>
+                        </Grid.RowDefinitions>
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="1*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Button x:Name="btn_ConnectionNorth" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="Transparent" BorderBrush="Transparent" Command="{StaticResource cmd_SetRoomConnectionNorth}" ToolTip="North">
+                            <Image x:Name="img_EditorConnectionNorth" Source="/Resources/Image/Editor/ArrowNorth.png" RenderOptions.BitmapScalingMode="HighQuality" Margin="0,15,0,0"/>
+                        </Button>
+
+                        <Button x:Name="btn_ConnectionWest" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="Transparent" BorderBrush="Transparent" Command="{StaticResource cmd_SetRoomConnectionWest}" ToolTip="West">
+                            <Image x:Name="img_EditorConnectionWest" Source="/Resources/Image/Editor/ArrowWest.png" RenderOptions.BitmapScalingMode="HighQuality" Margin="15,0,0,0"/>
+                        </Button>
+
+                        <Button x:Name="btn_ConnectionEast" Grid.Row="1" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="Transparent" BorderBrush="Transparent" Command="{StaticResource cmd_SetRoomConnectionEast}" ToolTip="East">
+                            <Image x:Name="img_EditorConnectionEast" Source="/Resources/Image/Editor/ArrowEast.png" RenderOptions.BitmapScalingMode="HighQuality" Margin="0,0,15,0"/>
+                        </Button>
+
+                        <Button x:Name="btn_ConnectionSouth" Grid.Row="3" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="Transparent" BorderBrush="Transparent" Command="{StaticResource cmd_SetRoomConnectionSouth}" ToolTip="South">
+                            <Image x:Name="img_EditorConnectionSouth" Source="/Resources/Image/Editor/ArrowSouth.png" RenderOptions.BitmapScalingMode="HighQuality" Margin="0,0,0,15"/>
+                        </Button>
+                    </Grid>
+
+
+                </GroupBox>
+
+            </Grid>
+
+            <StackPanel Orientation="Vertical" HorizontalAlignment="Left" VerticalAlignment="Center" IsHitTestVisible="False" Width="115" Opacity="0.7" Background="Gray">
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="/Resources/Image/Overlay/Start.png" RenderOptions.BitmapScalingMode="HighQuality" Height="64" Width="64"/>
+                    <Label x:Name="lbl_AmountStart" Content="0/0" VerticalAlignment="Center" FontSize="16"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="/Resources/Image/Overlay/Exit.png" RenderOptions.BitmapScalingMode="HighQuality" Height="64" Width="64"/>
+                    <Label x:Name="lbl_AmountExit" Content="0/0" VerticalAlignment="Center" FontSize="16"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="/Resources/Image/Overlay/Random.png" RenderOptions.BitmapScalingMode="HighQuality" Height="64" Width="64"/>
+                    <Label x:Name="lbl_AmountRandom" Content="0/0" VerticalAlignment="Center" FontSize="16"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="/Resources/Image/Overlay/Encounter.png" RenderOptions.BitmapScalingMode="HighQuality" Height="64" Width="64"/>
+                    <Label x:Name="lbl_AmountEncounter" Content="0/0" VerticalAlignment="Center" FontSize="16"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="/Resources/Image/Overlay/Loot.png" RenderOptions.BitmapScalingMode="HighQuality" Height="64" Width="64"/>
+                    <Label x:Name="lbl_AmountLoot" Content="0/0" VerticalAlignment="Center" FontSize="16"/>
+                </StackPanel>
+            </StackPanel>
+            
+            <Label x:Name="lbl_Version" Grid.Column="0" Content="Version" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="5" IsHitTestVisible="False" Foreground="DimGray"/>
+        </Grid>
+
+    </Grid>
+</Window>

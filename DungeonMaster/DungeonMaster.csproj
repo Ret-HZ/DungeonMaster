@@ -1,0 +1,111 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UseWPF>true</UseWPF>
+    <ApplicationIcon>Resources\DungeonMaster_icon.ico</ApplicationIcon>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Resources\Image\Editor\ArrowEast.png" />
+    <None Remove="Resources\Image\Editor\ArrowEastHighlight.png" />
+    <None Remove="Resources\Image\Editor\ArrowNorth.png" />
+    <None Remove="Resources\Image\Editor\ArrowNorthHighlight.png" />
+    <None Remove="Resources\Image\Editor\ArrowSouth.png" />
+    <None Remove="Resources\Image\Editor\ArrowSouthHighlight.png" />
+    <None Remove="Resources\Image\Editor\ArrowWest.png" />
+    <None Remove="Resources\Image\Editor\ArrowWestHighlight.png" />
+    <None Remove="Resources\Image\Editor\Encounter.png" />
+    <None Remove="Resources\Image\Editor\Exit.png" />
+    <None Remove="Resources\Image\Editor\Extension.png" />
+    <None Remove="Resources\Image\Editor\Hallway.png" />
+    <None Remove="Resources\Image\Editor\Loot.png" />
+    <None Remove="Resources\Image\Editor\None.png" />
+    <None Remove="Resources\Image\Editor\Random.png" />
+    <None Remove="Resources\Image\Editor\Room.png" />
+    <None Remove="Resources\Image\Editor\Start.png" />
+    <None Remove="Resources\Image\Editor\Unknown.png" />
+    <None Remove="Resources\Image\Icons\github.png" />
+    <None Remove="Resources\Image\Icons\ko-fi.png" />
+    <None Remove="Resources\Image\Overlay\Encounter.png" />
+    <None Remove="Resources\Image\Overlay\Exit.png" />
+    <None Remove="Resources\Image\Overlay\Extension.png" />
+    <None Remove="Resources\Image\Overlay\Loot.png" />
+    <None Remove="Resources\Image\Overlay\Random.png" />
+    <None Remove="Resources\Image\Overlay\Start.png" />
+    <None Remove="Resources\Image\Overlay\Unknown.png" />
+    <None Remove="Resources\Image\Tiles\RoomConnection\east.png" />
+    <None Remove="Resources\Image\Tiles\RoomConnection\north.png" />
+    <None Remove="Resources\Image\Tiles\RoomConnection\south.png" />
+    <None Remove="Resources\Image\Tiles\RoomConnection\west.png" />
+    <None Remove="Resources\Image\Tiles\RoomType\encounter.png" />
+    <None Remove="Resources\Image\Tiles\RoomType\exit.png" />
+    <None Remove="Resources\Image\Tiles\RoomType\extension.png" />
+    <None Remove="Resources\Image\Tiles\RoomType\hallway.png" />
+    <None Remove="Resources\Image\Tiles\RoomType\loot.png" />
+    <None Remove="Resources\Image\Tiles\RoomType\none.png" />
+    <None Remove="Resources\Image\Tiles\RoomType\room.png" />
+    <None Remove="Resources\Image\Tiles\RoomType\start.png" />
+    <None Remove="Resources\Image\Tiles\RoomType\unknown.png" />
+    <None Remove="Resources\Image\Tiles\TilesDark.png" />
+    <None Remove="Resources\Image\Tiles\TilesLight.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Resources\DungeonMaster_icon.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\DungeonFloorLib\DungeonFloorLib.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\Image\Editor\ArrowEast.png" />
+    <Resource Include="Resources\Image\Editor\ArrowEastHighlight.png" />
+    <Resource Include="Resources\Image\Editor\ArrowNorthHighlight.png" />
+    <Resource Include="Resources\Image\Editor\ArrowSouthHighlight.png" />
+    <Resource Include="Resources\Image\Editor\ArrowWestHighlight.png" />
+    <Resource Include="Resources\Image\Editor\ArrowNorth.png" />
+    <Resource Include="Resources\Image\Editor\ArrowSouth.png" />
+    <Resource Include="Resources\Image\Editor\ArrowWest.png" />
+    <Resource Include="Resources\Image\Editor\Encounter.png" />
+    <Resource Include="Resources\Image\Editor\Exit.png" />
+    <Resource Include="Resources\Image\Editor\Extension.png" />
+    <Resource Include="Resources\Image\Editor\Hallway.png" />
+    <Resource Include="Resources\Image\Editor\Loot.png" />
+    <Resource Include="Resources\Image\Editor\None.png" />
+    <Resource Include="Resources\Image\Editor\Random.png" />
+    <Resource Include="Resources\Image\Editor\Room.png" />
+    <Resource Include="Resources\Image\Editor\Start.png" />
+    <Resource Include="Resources\Image\Editor\Unknown.png" />
+    <Resource Include="Resources\Image\Icons\github.png" />
+    <Resource Include="Resources\Image\Icons\ko-fi.png" />
+    <Resource Include="Resources\Image\Overlay\Encounter.png" />
+    <Resource Include="Resources\Image\Overlay\Exit.png" />
+    <Resource Include="Resources\Image\Overlay\Extension.png" />
+    <Resource Include="Resources\Image\Overlay\Loot.png" />
+    <Resource Include="Resources\Image\Overlay\Random.png" />
+    <Resource Include="Resources\Image\Overlay\Start.png" />
+    <Resource Include="Resources\Image\Overlay\Unknown.png" />
+    <Resource Include="Resources\Image\Tiles\RoomConnection\East.png" />
+    <Resource Include="Resources\Image\Tiles\RoomConnection\North.png" />
+    <Resource Include="Resources\Image\Tiles\RoomConnection\South.png" />
+    <Resource Include="Resources\Image\Tiles\RoomConnection\West.png" />
+    <Resource Include="Resources\Image\Tiles\RoomType\Encounter.png" />
+    <Resource Include="Resources\Image\Tiles\RoomType\Exit.png" />
+    <Resource Include="Resources\Image\Tiles\RoomType\Extension.png" />
+    <Resource Include="Resources\Image\Tiles\RoomType\Hallway.png" />
+    <Resource Include="Resources\Image\Tiles\RoomType\Loot.png" />
+    <Resource Include="Resources\Image\Tiles\RoomType\None.png" />
+    <Resource Include="Resources\Image\Tiles\RoomType\Room.png" />
+    <Resource Include="Resources\Image\Tiles\RoomType\Start.png" />
+    <Resource Include="Resources\Image\Tiles\RoomType\Unknown.png" />
+    <Resource Include="Resources\Image\Tiles\TilesDark.png" />
+    <Resource Include="Resources\Image\Tiles\TilesLight.png" />
+  </ItemGroup>
+
+</Project>
