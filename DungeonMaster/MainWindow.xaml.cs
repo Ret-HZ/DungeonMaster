@@ -240,20 +240,24 @@ namespace DungeonMaster
 
         private void menuitem_Open_Click(object sender, RoutedEventArgs e)
         {
-            //TODO add an exception check in case its not a DGRF
-
             OpenFileDialog openFileDialog = new OpenFileDialog();
             openFileDialog.Filter = "DGRF file (*.bin)|*.bin|" + "All types (*.*)|*.*";
             Nullable<bool> result = openFileDialog.ShowDialog();
             if (result == true)
             {
-                // Open file 
-                string filePath = openFileDialog.FileName;
-                dungeonFloor = DungeonFloorReader.ReadDGRF(filePath);
-                this.fileName = Path.GetFileName(openFileDialog.FileName);
-                DrawLayout(dungeonFloor);
-                UpdateRoomAmountPanel();
-                UpdateWindowTitle();
+                try
+                {
+                    // Open file 
+                    string filePath = openFileDialog.FileName;
+                    dungeonFloor = DungeonFloorReader.ReadDGRF(filePath);
+                    this.fileName = Path.GetFileName(openFileDialog.FileName);
+                    DrawLayout(dungeonFloor);
+                    UpdateRoomAmountPanel();
+                    UpdateWindowTitle();
+                } catch (Exception ex)
+                {
+                    MessageBox.Show($"An error has occurred when opening the file.\nThe exception message is:\n\n{ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
             }
         }
 
